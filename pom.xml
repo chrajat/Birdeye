@@ -1,0 +1,387 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>BirdeyeAutomation</groupId>
+  <artifactId>BirdeyeTest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>BirdeyeTest</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+		<testng-version>7.8.0</testng-version>
+		<selenium-java-version>3.14.0</selenium-java-version>
+		<javaClient-version>7.0.0</javaClient-version>
+		<reportng-version>1.1.4</reportng-version>
+		<maven-compiler-plugin-version>3.8.0</maven-compiler-plugin-version>
+		<java-version>11</java-version>
+		<maven-surefire-plugin-version>2.20</maven-surefire-plugin-version>
+		<guice-version>3.0</guice-version>
+		<velocity-version>1.7</velocity-version>
+		<jaxp-api-version>1.4.5</jaxp-api-version>
+		<mail-version>1.4.7</mail-version>
+		<json-simple-version>1.1.1</json-simple-version>
+		<ganymed-ssh2-version>262</ganymed-ssh2-version>
+		<mysql-version>5.1.6</mysql-version>
+		<htmlunit-version>2.18</htmlunit-version>
+		<mongo-java-driver-version>3.2.2</mongo-java-driver-version>
+		<harlib-version>1.1.2</harlib-version>
+		<poi-version>3.13</poi-version>
+		<netty.version>4.0.23.Final</netty.version>
+		<browsermob-core>2.1.5</browsermob-core>
+		<bouncycastle.version>1.51</bouncycastle.version>
+		<extentreports-version>2.41.2</extentreports-version>
+		<poi-ooxml-version>3.14</poi-ooxml-version>
+		<rest-assured-version>3.0.7</rest-assured-version>
+		<log4j.version>1.2.17</log4j.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.sstoehr</groupId>
+			<artifactId>har-reader</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium-java-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium-java-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi-ooxml-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ru.yandex.qatools.ashot</groupId>
+			<artifactId>ashot</artifactId>
+			<version>1.4.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>${json-simple-version}</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>23.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.uncommons</groupId>
+			<artifactId>reportng</artifactId>
+			<version>${reportng-version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.testng</groupId>
+					<artifactId>testng</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>${guice-version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity-version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.xml.parsers</groupId>
+			<artifactId>jaxp-api</artifactId>
+			<version>${jaxp-api-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${mail-version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>ch.ethz.ganymed</groupId>
+			<artifactId>ganymed-ssh2</artifactId>
+			<version>${ganymed-ssh2-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>${htmlunit-version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>edu.umass.cs.benchlab</groupId>
+			<artifactId>harlib</artifactId>
+			<version>${harlib-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.java-diff-utils</groupId>
+			<artifactId>java-diff-utils</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		<!-- Dependency for Email Java API -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.12.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.0.1</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>jcl-over-slf4j</artifactId> 
+			<version>1.7.7</version> </dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20210307</version>
+		</dependency>
+
+		<!-- Dependency for Gmail API -->
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.31.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client</artifactId>
+			<version>1.30.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-gmail</artifactId>
+			<version>v1-rev20200203-1.30.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client-java6</artifactId>
+			<version>1.30.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.20.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client-jackson2</artifactId>
+			<version>1.20.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>3.12.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>4.1</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin-version}</version>
+				<configuration>
+					<forkCount>3</forkCount>
+					<reuseForks>true</reuseForks>
+					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+					<testFailureIgnore>true</testFailureIgnore>
+
+					<systemPropertyVariables>
+
+						<!-- Parameters to be used in each test suite run -->
+						<platform>${platform}</platform>
+						<natureOfBrowser>${natureOfBrowser}</natureOfBrowser>
+						<browser>${browser}</browser>
+
+
+						<!-- Being used when required to send Generated HTML Report through 
+							code -->
+						<recipient>${recipient}</recipient>
+						<emailType>${emailType}</emailType>
+
+						<!-- Parameter for db insertion -->
+						<dbFlag>${dbFlag}</dbFlag>
+
+
+						<!-- Parameter to be included for email reporting -->
+						<failureRecipient>${failureRecipient}</failureRecipient>
+						<mailBody>${mailBody}</mailBody>
+						<baseUrl>${baseUrl}</baseUrl>
+
+						<!-- Parameter for app version -->
+						<buildVersion>${buildVersion}</buildVersion>
+
+
+						<!-- parameter for specific device name and user agent -->
+						<deviceEmulatorName>${deviceEmulatorName}</deviceEmulatorName>
+						<deviceUserAgent>${deviceUserAgent}</deviceUserAgent>
+
+						<!-- parameter for notification Count api -->
+						<nodeName>${nodeName}</nodeName>
+
+						<!-- parameter for newsletter -->
+						<newsletterType>${newsletterType}</newsletterType>
+
+					</systemPropertyVariables>
+
+					<suiteXmlFiles>
+						<suiteXmlFile>suiteXmls/${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
+
+					<properties>
+						<property>
+							<name>usedefaultlisteners</name>
+							<value>false</value>
+						</property>
+						<property>
+							<name>listener</name>
+							<value>org.uncommons.reportng.HTMLReporter,
+								org.testng.reporters.XMLReporter,
+								org.uncommons.reportng.JUnitXMLReporter</value>
+						</property>
+					</properties>
+					<outputDirectory>/target</outputDirectory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin-version}</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
