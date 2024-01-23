@@ -16,7 +16,7 @@
 		<javaClient-version>7.0.0</javaClient-version>
 		<reportng-version>1.1.4</reportng-version>
 		<maven-compiler-plugin-version>3.8.0</maven-compiler-plugin-version>
-		<java-version>11</java-version>
+		<java-version>11.0.20.1</java-version>
 		<maven-surefire-plugin-version>2.20</maven-surefire-plugin-version>
 		<guice-version>3.0</guice-version>
 		<velocity-version>1.7</velocity-version>
@@ -312,50 +312,10 @@
 				<configuration>
 					<forkCount>3</forkCount>
 					<reuseForks>true</reuseForks>
-					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+
 					<testFailureIgnore>true</testFailureIgnore>
 
-					<systemPropertyVariables>
 
-						<!-- Parameters to be used in each test suite run -->
-						<platform>${platform}</platform>
-						<natureOfBrowser>${natureOfBrowser}</natureOfBrowser>
-						<browser>${browser}</browser>
-
-
-						<!-- Being used when required to send Generated HTML Report through 
-							code -->
-						<recipient>${recipient}</recipient>
-						<emailType>${emailType}</emailType>
-
-						<!-- Parameter for db insertion -->
-						<dbFlag>${dbFlag}</dbFlag>
-
-
-						<!-- Parameter to be included for email reporting -->
-						<failureRecipient>${failureRecipient}</failureRecipient>
-						<mailBody>${mailBody}</mailBody>
-						<baseUrl>${baseUrl}</baseUrl>
-
-						<!-- Parameter for app version -->
-						<buildVersion>${buildVersion}</buildVersion>
-
-
-						<!-- parameter for specific device name and user agent -->
-						<deviceEmulatorName>${deviceEmulatorName}</deviceEmulatorName>
-						<deviceUserAgent>${deviceUserAgent}</deviceUserAgent>
-
-						<!-- parameter for notification Count api -->
-						<nodeName>${nodeName}</nodeName>
-
-						<!-- parameter for newsletter -->
-						<newsletterType>${newsletterType}</newsletterType>
-
-					</systemPropertyVariables>
-
-					<suiteXmlFiles>
-						<suiteXmlFile>suiteXmls/${suiteXmlFile}</suiteXmlFile>
-					</suiteXmlFiles>
 
 					<properties>
 						<property>
@@ -369,7 +329,6 @@
 								org.uncommons.reportng.JUnitXMLReporter</value>
 						</property>
 					</properties>
-					<outputDirectory>/target</outputDirectory>
 				</configuration>
 			</plugin>
 

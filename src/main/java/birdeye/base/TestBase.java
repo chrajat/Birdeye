@@ -14,14 +14,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import birdeye.util.TestUtil;
-import birdeye.util.WebEventListener;
+
+//import birdeye.util.WebEventListener;
+
 
 public class TestBase {
 	
 	public static WebDriver driver;
 	public static Properties prop;
 	public  static EventFiringWebDriver e_driver;
-	public static WebEventListener eventListener;
+	//public static WebEventListener eventListener;
 	
 	public TestBase(){
 		try {
@@ -41,36 +43,39 @@ public class TestBase {
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equals("chrome")){
-			System.setProperty("webdriver.chrome.driver", "/Users/rajat.chaudhary/Downloads/chromedriver-mac-arm64/chromedriver");	
+			System.setProperty("webdriver.chrome.driver", "/Users/shivamchaudhary/Documents/auto/chromedriver-mac-arm64/chromedriver");
 			driver = new ChromeDriver(); 
 		}
 		else if(browserName.equals("FF")){
-			System.setProperty("webdriver.gecko.driver", "/Users/rajat.chaudhary/Downloads/chromedriver-mac-arm64/geckodriver");	
+			System.setProperty("webdriver.gecko.driver", "/Users/shivamchaudhary/Downloads/chromedriver-mac-arm64/geckodriver");
 			driver = new FirefoxDriver(); 
 		}
+
 		
 		
 		e_driver = new EventFiringWebDriver(driver);
 		// Now create object of EventListerHandler to register it with EventFiringWebDriver
-		eventListener = new WebEventListener();
-		e_driver.register(eventListener);
+		//eventListener = new WebEventListener();
+		//e_driver.register(eventListener);
 		driver = e_driver;
 		
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
-		
+
+
+
 		driver.get(prop.getProperty("url"));
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 }
