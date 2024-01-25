@@ -1,16 +1,12 @@
 package home.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import birdeye.base.TestBase;
 import home.methods.HomePageMethods;
@@ -18,6 +14,8 @@ import home.pageobjects.HomePageObjects;
 import home.methods.LoginPageMethods;
 import birdeye.util.TestUtil;
 import birdeye.util.WaitUtil;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class HomePageTest extends TestBase {
@@ -77,8 +75,8 @@ public class HomePageTest extends TestBase {
 	}
 
 
-*/
-	@Test(priority=2)
+
+
 
 	public void verifyAllPagesResponseCode() throws InterruptedException {
 		//driver.get("urlHome");
@@ -95,6 +93,31 @@ public class HomePageTest extends TestBase {
 		}
 
 	}
+	*/
+
+@Test
+	public void verifyPagesResponseCode() throws InterruptedException {
+
+		String pageSource = driver.getPageSource();
+		HashMap<String, Integer> urlResponse = new HashMap<String, Integer>();
+
+
+		Set<String> uniqueUrls = homePageMethods.extractUrls(pageSource);
+
+		// Print the extracted URLs
+		for (String url : uniqueUrls) {
+
+
+			// Print the status code
+			int statusCode = homePageMethods.getResponseCode(url);
+			urlResponse.put(url, statusCode);
+		}
+	urlResponse.forEach((key, value) -> {
+		System.out.println("------URL: ------> " + key + ", -------Status: " + value);
+	});
+
+}
+
 
 
 
