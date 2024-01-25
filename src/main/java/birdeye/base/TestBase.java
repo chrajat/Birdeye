@@ -66,7 +66,7 @@ public class TestBase {
 
 
 
-		driver.get(prop.getProperty("url"));
+		driver.get(prop.getProperty("urlHome"));
 
 	}
 
