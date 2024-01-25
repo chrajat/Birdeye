@@ -3,6 +3,8 @@ import home.pageobjects.HomePageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -23,6 +25,9 @@ public class HomePageMethods {
         String homePageTitle = homePageObjects.verifyHomePageTitle();
         return homePageTitle;
     }
+
+    // Extract URLs using a regular expression
+    // To get all URLs from pageSource
     public static Set<String> extractUrls(String pageSource) {
         Set<String> uniqueUrls = new HashSet<>();
 
@@ -41,6 +46,28 @@ public class HomePageMethods {
         }
 
         return uniqueUrls;
+    }
+
+
+// to get the response code of urls shared in String
+    public static int getResponseCode(String urlString) {
+        int statusCode = -1; // Default value for error
+
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("GET");
+
+            // Get the status code
+            statusCode = httpURLConnection.getResponseCode();
+
+            // Close the connection
+            httpURLConnection.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return statusCode;
     }
 
 
