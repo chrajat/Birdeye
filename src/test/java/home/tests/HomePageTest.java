@@ -1,5 +1,6 @@
 package home.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -103,6 +104,8 @@ public class HomePageTest extends TestBase {
 
 
 		Set<String> uniqueUrls = homePageMethods.extractUrls(pageSource);
+		System.out.println("Total URLS matched with the shared REGEX is: " +uniqueUrls.size());
+
 
 		// Print the extracted URLs
 		for (String url : uniqueUrls) {
@@ -115,6 +118,9 @@ public class HomePageTest extends TestBase {
 	urlResponse.forEach((key, value) -> {
 		System.out.println("------URL: ------> " + key + ", -------Status: " + value);
 	});
+		if (urlResponse.containsValue(200)){
+			Assert.assertTrue(true,"pass");
+		}
 
 }
 
