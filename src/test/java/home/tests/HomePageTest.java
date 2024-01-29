@@ -1,5 +1,6 @@
 package home.tests;
 
+import org.apache.hc.core5.reactor.Command;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,6 +18,10 @@ import birdeye.util.TestUtil;
 import birdeye.util.WaitUtil;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 
 public class HomePageTest extends TestBase {
@@ -96,7 +101,7 @@ public class HomePageTest extends TestBase {
 	}
 	*/
 
-@Test
+@Test(priority = 1)
 	public void verifyPagesResponseCode() throws InterruptedException {
 
 		String pageSource = driver.getPageSource();
@@ -104,25 +109,38 @@ public class HomePageTest extends TestBase {
 
 
 		Set<String> uniqueUrls = homePageMethods.extractUrls(pageSource);
+		System.out.println("\n");
 		System.out.println("Total URLS matched with the shared REGEX is: " +uniqueUrls.size());
 
 
 		// Print the extracted URLs
 		for (String url : uniqueUrls) {
 
-
 			// Print the status code
 			int statusCode = homePageMethods.getResponseCode(url);
 			urlResponse.put(url, statusCode);
+			System.out.println(urlResponse);
 		}
 	urlResponse.forEach((key, value) -> {
 		System.out.println("------URL: ------> " + key + ", -------Status: " + value);
 	});
-		if (urlResponse.containsValue(200)){
-			Assert.assertTrue(true,"pass");
+	// Print URLs and their statuses only if status is not 200
+	urlResponse.forEach((url, statusCode) -> {
+		if (statusCode != 200) {
+			System.out.println("URL with errors " + url + ", fault error: " + statusCode);
 		}
-
+		/*
+		urlResponse.forEach((url, statusCode) -> {
+    if (statusCode == 301 || statusCode == 404) {
+        System.out.println("URL with errors " + url + ", fault errors: " + statusCode);
+    }
+});
+		 */
+	});
 }
+
+
+
 
 
 
