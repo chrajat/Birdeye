@@ -34,13 +34,14 @@ public class HomePageMethods {
         // Define a regular expression pattern for extracting URLs
         //String regexPattern = "https://birdeye\\.com/([a-zA-Z0-9-_/]+)";
 
-        Pattern pattern = Pattern.compile("https://birdeye\\.com/([a-zA-Z0-9-_/]+)");
+        Pattern pattern = Pattern.compile("https://getbirdeye.com.au/([a-zA-Z0-9-_./]+)");
 
         // Create a Matcher object
         Matcher matcher = pattern.matcher(pageSource);
 
         // Find all matches
         while (matcher.find()) {
+            System.out.println("---------Matched URLS------------->  "+matcher.group());
             // Add each matched URL to the set to ensure uniqueness
             uniqueUrls.add(matcher.group());
         }
