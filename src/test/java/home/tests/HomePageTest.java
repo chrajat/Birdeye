@@ -99,8 +99,7 @@ public class HomePageTest extends TestBase {
 		}
 
 	}
-	*/
-
+*/
 @Test(priority = 1)
 	public void verifyPagesResponseCode() throws InterruptedException {
 
@@ -135,13 +134,37 @@ public class HomePageTest extends TestBase {
         System.out.println("URL with errors " + url + ", fault errors: " + statusCode);
     }
 });
-		 */
+*/
 	});
 }
 
 
+	@Test(priority=2)
+	public void verifyPagesResponseCMP() throws InterruptedException {
+
+		String baseKey = "URL";
+		int numberOfURLs = 57; // You can adjust this based on the number of URLs you have
+
+		for (int i = 1; i <= numberOfURLs; i++) {
+			String currentURLKey = baseKey + i;// Assuming you get the URL value from system properties
+
+			String url = prop.getProperty(currentURLKey);
 
 
+			// Print the status code
+			int statusCode = homePageMethods.getResponseCode(url);
+			//urlResponses.put(url, statusCode);
+
+		//urlResponse.forEach((key, value) -> {
+			//System.out.println("------URL: ------> " + url + ", -------Status: " + statusCode);
+
+					if (statusCode != 200) {
+						System.out.println("URL with errors " + url + ", fault error: " + statusCode);
+					}
+
+				}
+
+	}
 
 
 
