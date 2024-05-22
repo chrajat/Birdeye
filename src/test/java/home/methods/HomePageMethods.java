@@ -1,7 +1,7 @@
 package home.methods;
 import home.pageobjects.HomePageObjects;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.support.PageFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -13,35 +13,56 @@ import java.util.regex.Pattern;
 
 public class HomePageMethods {
 
-    private WebDriver driver;
+    //private WebDriver driver;
     private HomePageObjects homePageObjects;
 
-    public HomePageMethods() {
+    /*public HomePageMethods() {
         this.driver = driver;
         homePageObjects = PageFactory.initElements(driver, HomePageObjects.class);
     }
 
+
+     */
     public String verifyHomePageTitle() {
         String homePageTitle = homePageObjects.verifyHomePageTitle();
         return homePageTitle;
     }
 
     // Extract URLs using a regular expression
-    // To get all URLs from pageSource
-    public static Set<String> extractUrls(String pageSource) {
+    // To get all URLs from sitemap url
+    public static Set<String> extractUrlsSiteMap(String pageSource) {
         Set<String> uniqueUrls = new HashSet<>();
 
         // Define a regular expression pattern for extracting URLs
-        //String regexPattern = "https://birdeye\\.com/([a-zA-Z0-9-_/]+)";
 
-        Pattern pattern = Pattern.compile("https://birdeye.com/enterprise([a-zA-Z0-9-_./]+)");
+        Pattern pattern = Pattern.compile("https://birdeye.com/([a-zA-Z0-9-_./]+)");
 
         // Create a Matcher object
         Matcher matcher = pattern.matcher(pageSource);
 
         // Find all matches
         while (matcher.find()) {
-            System.out.println("---------Matched URLS------------->  "+matcher.group());
+            //System.out.println("---------Matched URLS------------->  "+matcher.group());
+            // Add each matched URL to the set to ensure uniqueness
+            uniqueUrls.add(matcher.group());
+        }
+
+        return uniqueUrls;
+    }
+    // To get all images URLs from page url
+    public static Set<String> extractUrlsImage(String pageSource) {
+        Set<String> uniqueUrls = new HashSet<>();
+
+        // Define a regular expression pattern for extracting URLs
+
+        Pattern pattern = Pattern.compile("https://cdn2.birdeye.com/([a-zA-Z0-9-_.@/']+)");
+
+        // Create a Matcher object
+        Matcher matcher = pattern.matcher(pageSource);
+
+        // Find all matches
+        while (matcher.find()) {
+           // System.out.println("---------Matched URLS------------->  "+matcher.group());
             // Add each matched URL to the set to ensure uniqueness
             uniqueUrls.add(matcher.group());
         }
