@@ -1,29 +1,32 @@
 package home.tests;
 
+//import birdeye.base.BaseTest;
+import common.launchsetup.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import birdeye.base.TestBase;
 import home.pageobjects.HomePageObjects;
 import home.pageobjects.LoginPageObjects;
 
 
-public class LoginPageTest extends TestBase{
+public class LoginPageTest extends BaseTest {
 	LoginPageObjects loginPage;
 	HomePageObjects homePage;
 	
 	public LoginPageTest(){
-		super();
-	}
-	
-	@BeforeMethod
-	public void setUp(){
-		initialization();
+//		super();
 		loginPage = new LoginPageObjects();
+		homePage = new HomePageObjects();
 	}
 	
+//	@BeforeMethod
+//	public void setUp(){
+////		initialization();
+//		loginPage = new LoginPageObjects();
+//	}
+//
 	/*@Test(priority=1)
 	public void loginPageTitleTest(){
 		String title = loginPage.validateLoginPageTitle();

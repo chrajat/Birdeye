@@ -1,14 +1,14 @@
 package home.pageobjects;
 
+import birdeye.base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.PageFactory;
 
-import birdeye.base.TestBase;
 
-public class HomePageObjects extends TestBase {
+public class HomePageObjects extends BaseTest {
 
 	@FindBy(xpath = "//td[contains(text(),'User: Naveen K')]")
 	@CacheLookup
